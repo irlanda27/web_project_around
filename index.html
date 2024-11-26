@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Este es mi septimo proyecto en la escuela" />
+  <meta name="author" content="Irlanda J" />
+  <meta name="keywords" content="proyecto, escuela, pagina" />
+  <link rel="stylesheet" href="./pages/index.css" />
+  <title>Around the US</title>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="header__vector" src="images/Vector.png" alt="imagenvector">
+    </header>
+    <div class="profile">
+      <img class="profile__image" src="images/image.jpg" alt="jacquesexplorador" />
+      <div>
+        <div class="profile__info">
+          <p id="profile-name">Jacques Cousteau</p>
+          <button class="profile__button" id="pencil-editor">
+            <img src="images/edit_button.png" alt="iconodelapiz>">
+          </button>
+        </div>
+        <p class="profile__info-explorador" id="profile-info">Explorador</p>
+      </div>
+    </div>
+  </div>
+  <dialog class="popup" id="popup-editor">
+    <div class="popup__container">
+      <p class="popup__title"> Editar perfil </p>
+      <form class="popup__form">
+        <input class="popup__input" type="text" placeholder="Nombre" id="input-name">
+        <input class="popup__input" type="text" placeholder="Acerca de mí" id="input-about-me">
+      </form>
+      <img class="popup__submit" src="./images/Submit Button.png" alt="botonguardar" id="button-save">
+      <button class="popup__close" id="close-button">
+        <img class="popup__close-icon" src="./images/close_icon.png" alt="iconodecerrar">
+      </button>
+    </div>
+  </dialog>
+  <section class="element">
+    <div class="element__card">
+      <img class="element__card-image" src="images/valle de yosemite.jpg" alt="fotovalleyosemite" />
+      <div class="element__content">
+        <h2 class="element__place">Valle de Yosemite</h2>
+        <img class="element__like-button" src="images/Vectorcorazon.svg" alt="botonlike" />
+      </div>
+    </div>
+    <div class="element__card">
+      <img class="element__card-image" src="images/lagolouise.png" alt="fotolagolouise" />
+      <div class="element__content">
+        <h2 class="element__place">Lago Louise</h2>
+        <img class="element__like-button" src="images/Vectorcorazon.svg" alt="botonlike" />
+      </div>
+    </div>
+    <div class="element__card">
+      <img class="element__card-image" src="images/montanascalvas.png" alt="fotomontanascalvas" />
+      <div class="element__content">
+        <h2 class="element__place">Montañas Calvas</h2>
+        <img class="element__like-button" src="images/Vectorcorazon.svg" alt="botonlike" />
+      </div>
+    </div>
+    <div class="element__card">
+      <img class="element__card-image" src="images/late mar.png" alt="fotolatemar" />
+      <div class="element__content">
+        <h2 class="element__place">Latemar</h2>
+        <img class="element__like-button" src="images/Vectorcorazon.svg" alt="botonlike" />
+      </div>
+    </div>
+    <div class="element__card">
+      <img class="element__card-image" src="images/vanois national.png" alt="fotovanoisnational" />
+      <div class="element__content">
+        <h2 class="element__place">Vanois National...</h2>
+        <img class="element__like-button" src="images/Vectorcorazon.svg" alt="botonlike" />
+      </div>
+    </div>
+    <div class="element__card">
+      <img class="element__card-image" src="images/Lago di Braies.png" alt="fotolagodiBraies" />
+      <div class="element__content">
+        <h2 class="element__place">Lago di Braies</h2>
+        <img class="element__like-button" src="images/Vectorcorazon.svg" alt="botonlike" />
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <p class="footer__copyright">© 2024 Around The U.S.</p>
+  </footer>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
