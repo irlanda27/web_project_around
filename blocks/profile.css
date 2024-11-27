@@ -45,6 +45,13 @@ display: flex;
 margin-left: 18px;
 }
 
+.profile__add-button{
+display: flex;
+width: 150px;
+background-color: transparent; 
+margin-left: 140px;
+}
+
 
 
 @media screen and (max-width: 320px) {
