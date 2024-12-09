@@ -6,6 +6,28 @@ const inputName=document.querySelector('#input-name')
 const inputAboutMe=document.querySelector('#input-about-me')
 const profileName=document.querySelector('#profile-name')
 const profileInfo=document.querySelector('#profile-info')
+const elementTemplate= document.querySelector ('#element-template')
+const elementContainer=document.querySelector('.element')
+
+const popupCreateCard=document.querySelector('#popup-add-images')
+const addButton=document.querySelector('#add-button')
+const closeCreateCard=document.querySelector('#close-icon')
+const submitButton=document.querySelector('#submit-button')
+const inputTitle=document.querySelector('#input-title')
+const inputUrl=document.querySelector('#input-image-url')
+
+
+
+
+
+addButton.addEventListener("click",function(evt){  //abrir la carta
+popupCreateCard.showModal()
+})
+
+closeCreateCard.addEventListener("click", function(evt){
+popupCreateCard.close()
+})
+
 
 
 
@@ -27,4 +49,72 @@ buttonSubmit.addEventListener("click", function(evt){
 })
 
 
+const initialCards = [
+    {
+      name: "Valle de Yosemite",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+    },
+    {
+      name: "Lago Louise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+    },
+    {
+      name: "Montañas Calvas",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+    },
+    {
+      name: "Latemar",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+    },
+    {
+      name: "Parque Nacional de la Vanoise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+    }
+  ];
+
+  initialCards.forEach((card) => {
+  createCard(card)
+})
+
+function createCard(card) {  // funcion para crear una carta
+  const newCard = elementTemplate.content.querySelector('.element__card').cloneNode(true)
+  const imageCard = newCard.querySelector('.element__card-image')
+  const elementContent = newCard.querySelector('.element__place')
+  const likeButton=newCard.querySelector('.element__like-button')
+  const trashButton=newCard.querySelector('.element__trash')
+
+trashButton.addEventListener('click',function(evt){
+  const parentElement = evt.target.closest('.element__card')
+  if (parentElement) {
+    parentElement.remove()
+  }
+})
+
+
+
+likeButton.addEventListener('click',function (evt){
+
+if (likeButton.src.includes("/images/Union.png")){
+  likeButton.src="../images/Vector_corazon.svg"
+}else{
+  likeButton.src="../images/Union.png"
+}
+  })
+  imageCard.src = card.link
+  elementContent.textContent = card.name
+  elementContainer.prepend(newCard)
+}
+
+submitButton.addEventListener("click", function(evt){
+evt.preventDefault()    // esto es para que no se recargue la pag al guardar
+createCard({    // funcion para crear carta
+  name:inputTitle.value,  // valor del input y que se asigne a name
+  link:inputUrl.value,
+})
+popupCreateCard.close() // funcion para cerrar el popup
+})
 
