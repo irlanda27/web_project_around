@@ -28,3 +28,7 @@ Este proyecto es una página web interactiva llamada "Alrededor de los EE.UU.", 
 
 **Este proyecto fue creado por Irlanda27 como parte de un sprint para aprender y desarrollar habilidades de programación web:**
 • GitHub: irlanda27
+
+## 👩‍💻 PUEDES REVISAR MI SITIO EN VIVO EN:
+
+https://irlanda27.github.io/web_project_around/
