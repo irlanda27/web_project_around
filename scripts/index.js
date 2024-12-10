@@ -15,9 +15,14 @@ const closeCreateCard=document.querySelector('#close-icon')
 const submitButton=document.querySelector('#submit-button')
 const inputTitle=document.querySelector('#input-title')
 const inputUrl=document.querySelector('#input-image-url')
+const popupWindow=document.querySelector('.popup__window')
+const popupWindowImage=document.querySelector('.popup__window-image')
+const popupWindowCloseButton=document.querySelector('.popup__close-window')
 
 
-
+popupWindowCloseButton.addEventListener('click', function (evt){
+popupWindow.close()
+})
 
 
 addButton.addEventListener("click",function(evt){  //abrir la carta
@@ -85,7 +90,13 @@ function createCard(card) {  // funcion para crear una carta
   const imageCard = newCard.querySelector('.element__card-image')
   const elementContent = newCard.querySelector('.element__place')
   const likeButton=newCard.querySelector('.element__like-button')
-  const trashButton=newCard.querySelector('.element__trash')
+  const trashButton=newCard.querySelector('.element__trash') //estas variables tienen que estar aqui porque se repiten muchas veces al ejecutarse, si estuvieran arriba seria 1 sola vez
+
+
+imageCard.addEventListener('click', function (evt){
+popupWindow.showModal()
+})
+
 
 trashButton.addEventListener('click',function(evt){
   const parentElement = evt.target.closest('.element__card')
@@ -93,7 +104,6 @@ trashButton.addEventListener('click',function(evt){
     parentElement.remove()
   }
 })
-
 
 
 likeButton.addEventListener('click',function (evt){
