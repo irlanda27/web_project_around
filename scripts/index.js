@@ -21,20 +21,16 @@ const popupWindowCloseButton=document.querySelector('.popup__close-window')
 
 
 popupWindowCloseButton.addEventListener('click', function (evt){
-popupWindow.close()
+  popupWindow.close()
 })
 
-
 addButton.addEventListener("click",function(evt){  //abrir la carta
-popupCreateCard.showModal()
+  popupCreateCard.showModal()
 })
 
 closeCreateCard.addEventListener("click", function(evt){
-popupCreateCard.close()
+  popupCreateCard.close()
 })
-
-
-
 
 pencil.addEventListener("click",function(evt){
     popup.showModal()
@@ -105,7 +101,6 @@ trashButton.addEventListener('click',function(evt){
   }
 })
 
-
 likeButton.addEventListener('click',function (evt){
 
 if (likeButton.src.includes("/images/Union.png")){
@@ -127,4 +122,3 @@ createCard({    // funcion para crear carta
 })
 popupCreateCard.close() // funcion para cerrar el popup
 })
-
