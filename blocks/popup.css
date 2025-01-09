@@ -136,3 +136,7 @@ border: none;
 top:0;
 right: 0;
 }
+
+.popup__button_disabled{
+pointer-events: none;
+}
