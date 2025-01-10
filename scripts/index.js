@@ -122,14 +122,3 @@ createCard({    // funcion para crear carta
 })
 popupCreateCard.close() // funcion para cerrar el popup
 })
-
-
-//funcion para cerrar el pop up cuando el usuario hace clic fuera del popup.
-function closePopUp (e){
- if(e.target.className =="popup"){  //esta funcion es para cerrar el popup, teoria de eventos
-popup.close()  
- }
-  }
-
-
-popup.addEventListener("click",closePopUp)
