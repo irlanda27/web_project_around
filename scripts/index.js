@@ -91,6 +91,10 @@ function createCard(card) {  // funcion para crear una carta
 
 imageCard.addEventListener('click', function (evt){
 popupWindow.showModal()
+const imagePopUp=document.querySelector(".popup__window-image")
+const titlePopUp=document.querySelector(".popup__window-text")
+imagePopUp.src=card.link
+titlePopUp.textContent=card.name
 })
 
 
@@ -121,4 +125,23 @@ createCard({    // funcion para crear carta
   link:inputUrl.value,
 })
 popupCreateCard.close() // funcion para cerrar el popup
+})
+
+//funcion para cerrar el popup dando click afuera 
+popupCreateCard.addEventListener("click", function(evt){
+if(!evt.target.classList.contains("popup__container")){
+  popupCreateCard.close()
+}
+})
+
+popup.addEventListener("click",function(evt){
+  if(!evt.target.classList.contains("popup__container")){
+popup.close()
+    }
+})
+
+popupWindow.addEventListener("click",function(evt){
+  if(!evt.target.classList.contains("popup__window-container")){
+popupWindow.close()
+    }
 })

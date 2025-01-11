@@ -1,6 +1,5 @@
 
 
-
 //esta funcion es para devolver true cuando algun input es invalido
 function hasInvalidInput(inputs){
 return inputs.some(function(input){   //esta expresion te devuelve un true o false si al menos 1 elemento dentro de la lista coincide con la validacion
