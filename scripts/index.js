@@ -129,19 +129,19 @@ popupCreateCard.close() // funcion para cerrar el popup
 
 //funcion para cerrar el popup dando click afuera 
 popupCreateCard.addEventListener("click", function(evt){
-if(!evt.target.classList.contains("popup__container")){
+if(evt.target.classList.contains("popup")){
   popupCreateCard.close()
 }
 })
 
 popup.addEventListener("click",function(evt){
-  if(!evt.target.classList.contains("popup__container")){
+  if(evt.target.classList.contains("popup")){
 popup.close()
     }
 })
 
 popupWindow.addEventListener("click",function(evt){
-  if(!evt.target.classList.contains("popup__window-container")){
+  if(evt.target.classList.contains("popup__window")){
 popupWindow.close()
     }
 })
