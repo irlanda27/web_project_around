@@ -1,3 +1,13 @@
+import Section from "./Section.js"   //importar la clase Section
+import Card from "./Card.js"  //importar la clase Card
+import Popup from "./Popup.js"  //importar la clase Popup
+import FormValidator from "./FormValidator.js"  //importar la clase FormValidator
+import formElement from "./formElement.js"  //importar la clase formElement
+
+
+const instancia = new Section ()
+
+
 const popup=document.querySelector('#popup-editor')
 const pencil=document.querySelector('#pencil-editor')
 const closeButton= document.querySelector('#close-button')
