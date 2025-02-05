@@ -1,13 +1,11 @@
 class PopupWithForm extends PopUp {
-constructor(popupSelector, submitForm){
+  constructor(popupSelector, submitForm) {}
 
+  _getInputValues() {
+    //funcion para obtener los valores de los inputs
+  }
 
-    _getInputValues(){
-        //funcion para obtener los valores de los inputs
-    }
-    
-    setEventListeners(){
-super.setEventListeners()
-    }
-}
+  setEventListeners() {
+    super.setEventListeners();
+  }
 }
