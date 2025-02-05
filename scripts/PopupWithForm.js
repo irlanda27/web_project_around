@@ -7,8 +7,7 @@ constructor(popupSelector, submitForm){
     }
     
     setEventListeners(){
-submitForm.addEventListener('submit', function(evt){
-    evt.preventDefault()
+super.setEventListeners()
     }
 }
 }
