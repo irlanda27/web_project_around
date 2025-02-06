@@ -1,16 +1,16 @@
 import Section from "./Section.js"; //importar la clase Section
 import Card from "./Card.js"; //importar la clase Card
-import Popup from "./Popup.js"; //importar la clase Popup
 import FormValidator from "./FormValidator.js"; //importar la clase FormValidator
-import formElement from "./formElement.js"; //importar la clase formElement
+import UserInfo from "./UserInfo.js"; //importar la clase UserInfo
+import PopupWithForm from "./PopupWithForm.js"; //importar la clase PopupWithForm
+import PopupWithImage from "./PopupWithImage.js"; //importar la clase PopupWithImage
 
-const instancia = new Section();
-const instancia = new Card();
-const instancia = new Popup();
-const instancia = new FormValidator();
-const instancia = new formElement();
-const instancia = new Popup();
-const instancia = new UserInfo();
+const section = new Section();
+const card = new Card();
+const formValidator = new FormValidator();
+const userInfo = new UserInfo();
+const popupWithForm = new PopupWithForm();
+const popupWithImage = new PopupWithImage();
 
 const popup = document.querySelector("#popup-editor");
 const pencil = document.querySelector("#pencil-editor");
@@ -33,6 +33,7 @@ const popupWindow = document.querySelector(".popup__window");
 const popupWindowImage = document.querySelector(".popup__window-image");
 const popupWindowCloseButton = document.querySelector(".popup__close-window");
 
+//funcion para cerrar el popup de la imagen
 popupWindowCloseButton.addEventListener("click", function (evt) {
   popupWindow.close();
 });
@@ -42,20 +43,24 @@ addButton.addEventListener("click", function (evt) {
   popupCreateCard.showModal();
 });
 
+//funcion para cerrar el popup de la carta
 closeCreateCard.addEventListener("click", function (evt) {
   popupCreateCard.close();
 });
 
+//funcion para al hacer click en el lapiz aparezca popup con el formulario de editar perfil
 pencil.addEventListener("click", function (evt) {
   popup.showModal();
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileInfo.textContent;
 });
 
+//funcion para cerrar el popup de editar perfil
 closeButton.addEventListener("click", function (evt) {
   popup.close();
 });
 
+//funcion para guardar los datos del formulario de editar perfil
 buttonSubmit.addEventListener("click", function (evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -63,6 +68,7 @@ buttonSubmit.addEventListener("click", function (evt) {
   popup.close();
 });
 
+//array de las imagenes de las tarjetas
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -148,6 +154,7 @@ popupCreateCard.addEventListener("click", function (evt) {
   }
 });
 
+//funcion para cerrar el popup de la imagen dando click afuera
 popup.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup")) {
     popup.close();
