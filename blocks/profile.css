@@ -1,0 +1,79 @@
+.profile{
+display: flex;
+flex-direction: row;
+max-width: 880px;
+line-height: 120px;
+margin: auto;
+width: 100%;
+margin-top: 40px;
+margin-bottom: 40px;
+align-items: center;
+}
+
+.profile__image{
+  width: 150px; 
+  border-radius: 50%;
+  object-fit: cover;
+  justify-self: flex-end;
+  margin-right: 30px;
+}
+
+.profile__info{
+  display: flex;
+  align-items: center;
+  font-family: Inter;
+  color:  #FFFFFF;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+}
+
+.profile__info-explorador{
+  display: flex;
+font-family: Inter;
+font-size: 18px;
+font-weight: 400;
+height: fit-content;
+line-height: 21.78px;
+margin-top: 16px;
+}
+
+.profile__button{
+width: 24px;
+background-color: transparent; 
+display: flex;
+margin-left: 18px;
+}
+
+.profile__add-button{
+display: flex;
+width: 150px;
+background-color: transparent; 
+margin-left: 140px;
+}
+
+
+
+@media screen and (max-width: 320px) {
+.profile{
+width: 282px;
+padding-left: 19px;
+flex-direction: column;
+text-align: center;
+font-size: 22px;
+line-height: 26.63px;
+}
+
+.profile__image{
+  width: 120px;
+  margin: auto;
+}
+}
+
+@media screen and (max-width: 768px) {
+  .profile{
+  padding-left: 19px;
+  flex-direction: column;
+  text-align: center;
+  }
+}
