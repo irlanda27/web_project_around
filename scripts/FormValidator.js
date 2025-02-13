@@ -13,8 +13,8 @@ export default class FormValidator {
 
   //esta funcion es para deshabilitar o habilitar dependiendo si existe un error en los inputs
   _toggleButtonState(/* this._settings, this._inputs, this._buttonElement */) {
+    console.log(this._hasInvalidInput(this._inputs));
     if (this._hasInvalidInput(this._inputs)) {
-      //esta condicional es para validar mas organizado si el input es invalido
       this._buttonElement.classList.add(this._settings.inactiveButtonClass);
       this._buttonElement.disabled = true; //aqui se desactiva el boton
     } else {

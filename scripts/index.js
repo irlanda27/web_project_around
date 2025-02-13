@@ -11,16 +11,15 @@ import PopupWithImage from "./PopupWithImage.js"; //importar la clase PopupWithI
 const popup = document.querySelector("#popup-editor");
 const pencil = document.querySelector("#pencil-editor");
 const closeButton = document.querySelector("#close-button");
-const buttonSubmit1 = document.querySelector("#button-submit1");
+const buttonSubmitProfile = document.querySelector("#button-submitProfile");
 const inputName = document.querySelector("#input-name");
 const inputAboutMe = document.querySelector("#input-about-me");
 const profileName = document.querySelector("#profile-name");
 const profileInfo = document.querySelector("#profile-info");
-const elementTemplate = document.querySelector("#element-template");
 const elementContainer = document.querySelector(".element");
 const addButton = document.querySelector("#add-button");
 const closeCreateCard = document.querySelector("#close-icon");
-const submitButton2 = document.querySelector("#button-submit2");
+const buttonSubmitNewCard = document.querySelector("#button-submitNewCard");
 const inputTitle = document.querySelector("#input-title");
 const inputUrl = document.querySelector("#input-image-url");
 const popupWindow = document.querySelector(".popup__window");
@@ -54,7 +53,7 @@ closeButton.addEventListener("click", function (evt) {
 });
 
 //funcion para guardar los datos del formulario de editar perfil
-buttonSubmit1.addEventListener("click", function (evt) {
+buttonSubmitProfile.addEventListener("click", function (evt) {
   console.log("click");
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -109,6 +108,8 @@ function createCard(card) {
   return newCard;
 }
 
+//*...............................................................................................................
+//* Aquí se crean las instancias de las clases PopupWithForm para crear tarjeta y editar perfil
 const popupCreateCard = new PopupWithForm("#popup-add-images", (values) => {
   const newCard = createCard(values);
   elementContainer.prepend(newCard);
@@ -122,10 +123,9 @@ addButton.addEventListener("click", function (evt) {
 const popupProfileEdit = new PopupWithForm("#popup-editor");
 popupProfileEdit.setEventListeners();
 
-submitButton2.addEventListener("click", function (evt) {
+buttonSubmitNewCard.addEventListener("click", function (evt) {
   evt.preventDefault();
   createCard({
-    // funcion para crear carta
     name: inputTitle.value, // valor del input y que se asigne a name
     link: inputUrl.value,
   });
