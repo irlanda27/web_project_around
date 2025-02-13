@@ -3,7 +3,6 @@ export default class PopupWithForm extends PopUp {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
     this.submitForm = submitForm;
-    console.log(submitForm);
   }
 
   handleSubmit() {
@@ -26,7 +25,6 @@ export default class PopupWithForm extends PopUp {
       .addEventListener("submit", (evt) => {
         evt.preventDefault();
         this.submitForm(this._getInputValues());
-        console.log(this._getInputValues());
       });
   }
 }
