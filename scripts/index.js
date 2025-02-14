@@ -5,28 +5,27 @@ import FormValidator from "./FormValidator.js"; //importar la clase FormValidato
 import UserInfo from "./UserInfo.js"; //importar la clase UserInfo
 import PopupWithForm from "./PopupWithForm.js"; //importar la clase PopupWithForm
 import PopupWithImage from "./PopupWithImage.js"; //importar la clase PopupWithImage
-
-//*...............................................................................................................
-// * Variables de elementos de los popups y botones
-const popup = document.querySelector("#popup-editor");
-const pencil = document.querySelector("#pencil-editor");
-const closeButton = document.querySelector("#close-button");
-const buttonSubmitProfile = document.querySelector("#button-submitProfile");
-const inputName = document.querySelector("#input-name");
-const inputAboutMe = document.querySelector("#input-about-me");
-const profileName = document.querySelector("#profile-name");
-const profileInfo = document.querySelector("#profile-info");
-const elementContainer = document.querySelector(".element");
-const addButton = document.querySelector("#add-button");
-const closeCreateCard = document.querySelector("#close-icon");
-const buttonSubmitNewCard = document.querySelector("#button-submitNewCard");
-const inputTitle = document.querySelector("#input-title");
-const inputUrl = document.querySelector("#input-image-url");
-const popupWindow = document.querySelector(".popup__window");
-const popupWindowImage = document.querySelector(".popup__window-image");
-const popupWindowCloseButton = document.querySelector(".popup__close-window");
-const formCreateCard = document.querySelector("#form-card");
-const formProfileEdit = document.querySelector("#form-profile");
+import {
+  popup,
+  pencil,
+  closeButton,
+  buttonSubmitProfile,
+  inputName,
+  inputAboutMe,
+  profileName,
+  profileInfo,
+  elementContainer,
+  addButton,
+  closeCreateCard,
+  buttonSubmitNewCard,
+  inputTitle,
+  inputUrl,
+  popupWindow,
+  popupWindowImage,
+  popupWindowCloseButton,
+  formCreateCard,
+  formProfileEdit,
+} from "./utils.js";
 
 //*...............................................................................................................
 // * Aquí se crean las instancias de las clases
@@ -111,7 +110,9 @@ function createCard(card) {
 //*...............................................................................................................
 //* Aquí se crean las instancias de las clases PopupWithForm para crear tarjeta y editar perfil
 const popupCreateCard = new PopupWithForm("#popup-add-images", (values) => {
+  console.log(values);
   const newCard = createCard(values);
+  console.log(newCard);
   elementContainer.prepend(newCard);
   popupCreateCard.close();
 });
@@ -122,28 +123,6 @@ addButton.addEventListener("click", function (evt) {
 
 const popupProfileEdit = new PopupWithForm("#popup-editor");
 popupProfileEdit.setEventListeners();
-
-buttonSubmitNewCard.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  createCard({
-    name: inputTitle.value, // valor del input y que se asigne a name
-    link: inputUrl.value,
-  });
-  popupCreateCard.close(); // funcion para cerrar el popup
-});
-
-//funcion para cerrar el popup de la imagen dando click afuera
-popup.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("popup")) {
-    popup.close();
-  }
-});
-
-popupWindow.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("popup__window")) {
-    popupWindow.close();
-  }
-});
 
 const formValidator = new FormValidator(
   {

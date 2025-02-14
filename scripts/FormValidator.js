@@ -26,7 +26,7 @@ export default class FormValidator {
   //esta funcion es para esconder el mensaje de error
   _hideInputError(/* this._settings, this._iterarFormElement, this._iterarInput */) {
     this._errorElement = this._formSelector.querySelector(
-      `#${iterarInput.id}-error`
+      `#${this._iterarInput.id}-error`
     );
     this._errorElement.textContent = ""; //aqui se elimina el mensaje de error si todo esta bien
   }
@@ -35,17 +35,25 @@ export default class FormValidator {
   _showInputError(/* this._settings, this._iterarFormElement, this._iterarInput */) {
     this._errorMessage = this._iterarInput.validationMessage;
     this._errorElement = this._formSelector.querySelector(
-      `#${iterarInput.id}-error`
-    ); //los back sticks son una comilla especial para poder concatenar una expresion de js con texto
-    errorElement.textContent = errorMessage;
+      `#${this._iterarInput.id}-error`
+    );
+    this._errorElement.textContent = this._errorMessage;
   }
 
   //esta funcion es para verificar si el input es valido y manda mensaje de error
-  _checkInputValidity(/* this._settings, this._iterarFormElement, this._iterarInput */) {
-    if (!iterarInput.validity.valid) {
-      showInputError(this._settings, this._formSelector, this._iterarInput);
+  _checkInputValidity() {
+    if (this._iterarInput.validity.valid) {
+      this._showInputError(
+        this._settings,
+        this._formSelector,
+        this._iterarInput
+      );
     } else {
-      hideInputError(this._settings, this._formSelector, this._iterarInput);
+      this._hideInputError(
+        this._settings,
+        this._formSelector,
+        this._iterarInput
+      );
     }
   }
 
@@ -59,9 +67,10 @@ export default class FormValidator {
       this._settings.submitButtonSelector
     );
     this._toggleButtonState(/* settings, */ this._inputs, this._buttonElement); //el toggle significa que cambia de prendido a apagado
-    this._inputs.forEach(function (iterarInput) {
+    this._inputs.forEach((iterarInput) => {
+      this._iterarInput = iterarInput;
       //aqui estamos iterando en 1 input solamente
-      iterarInput.addEventListener("input", function (evt) {
+      iterarInput.addEventListener("input", (evt) => {
         //la accion de input es que cada vez que yo escriba algo dentro se llama al evento
         this._checkInputValidity(
           /* settings, */ this._formSelector,
