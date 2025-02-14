@@ -25,6 +25,7 @@ import {
   popupWindowCloseButton,
   formCreateCard,
   formProfileEdit,
+  closeButton2,
 } from "./utils.js";
 
 //*...............................................................................................................
@@ -32,6 +33,7 @@ import {
 const userInfo = new UserInfo({ name: profileName, aboutMe: profileInfo });
 
 const popupWithImage = new PopupWithImage(".popup__window");
+popupWithImage.setEventListeners();
 
 //*...............................................................................................................
 //* Aquí se ejecutan los métodos de las instancias
@@ -49,6 +51,10 @@ pencil.addEventListener("click", function (evt) {
 //funcion para cerrar el popup de editar perfil
 closeButton.addEventListener("click", function (evt) {
   popup.close();
+});
+
+closeButton2.addEventListener("click", function (evt) {
+  popupWithImage.close();
 });
 
 //funcion para guardar los datos del formulario de editar perfil

@@ -3,7 +3,6 @@ export default class Popup {
     this.popupSelector = document.querySelector(popupSelector);
   }
 
-  //funcion para abrir el popup
   open() {
     this.popupSelector.showModal();
   }

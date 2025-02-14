@@ -4,6 +4,7 @@
 export const popup = document.querySelector("#popup-editor");
 export const pencil = document.querySelector("#pencil-editor");
 export const closeButton = document.querySelector("#close-button");
+export const closeButton2 = document.querySelector("#close-icon-2");
 export const buttonSubmitProfile = document.querySelector(
   "#button-submitProfile"
 );
