@@ -1,10 +1,11 @@
 // * Aquí se importaron todas las clases que creamos en las carpetas
-import Section from "./Section.js"; //importar la clase Section
-import Card from "./Card.js"; //importar la clase Card
-import FormValidator from "./FormValidator.js"; //importar la clase FormValidator
-import UserInfo from "./UserInfo.js"; //importar la clase UserInfo
-import PopupWithForm from "./PopupWithForm.js"; //importar la clase PopupWithForm
-import PopupWithImage from "./PopupWithImage.js"; //importar la clase PopupWithImage
+import Section from "./Section.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import UserInfo from "./UserInfo.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import api from "./Api.js";
 import {
   popup,
   pencil,
@@ -29,9 +30,27 @@ import {
 } from "./utils.js";
 
 //*...............................................................................................................
-// * Aquí se crean las instancias de las clases
+// * Aquí se cargó la información del usuario desde la API
+
 const userInfo = new UserInfo({ name: profileName, aboutMe: profileInfo });
 
+api.getUser().then((response) => {
+  userInfo.setUserInfo(response);
+});
+
+//*...............................................................................................................
+// * Aquí se cargaron las tarjetas desde la API
+api.getCards().then((response) => {
+  new Section(
+    {
+      items: response,
+      renderer: createCard,
+    },
+    ".element"
+  ).render();
+});
+
+//*...............................................................................................................
 const popupWithImage = new PopupWithImage(".popup__window");
 popupWithImage.setEventListeners();
 
@@ -41,7 +60,8 @@ closeCreateCard.addEventListener("click", function (evt) {
   popupCreateCard.close();
 });
 
-//funcion para al hacer click en el lapiz aparezca popup con el formulario de editar perfil
+//*...............................................................................................................
+//* Aquí se crean las funciones para los botones de editar perfil y cerrar el popup
 pencil.addEventListener("click", function (evt) {
   popup.showModal();
   inputName.value = profileName.textContent;
@@ -55,15 +75,6 @@ closeButton.addEventListener("click", function (evt) {
 
 closeButton2.addEventListener("click", function (evt) {
   popupWithImage.close();
-});
-
-//funcion para guardar los datos del formulario de editar perfil
-buttonSubmitProfile.addEventListener("click", function (evt) {
-  console.log("click");
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileInfo.textContent = inputAboutMe.value;
-  popup.close();
 });
 
 //*...............................................................................................................
@@ -97,14 +108,6 @@ const initialCards = [
 
 //*...............................................................................................................
 //*Aquí se crea la instancia de la clase Section
-console.log(initialCards);
-new Section(
-  {
-    items: initialCards,
-    renderer: createCard,
-  },
-  ".element"
-).render();
 
 function createCard(card) {
   const newCard = new Card(card.name, card.link, "#element-template", () =>
@@ -127,7 +130,13 @@ addButton.addEventListener("click", function (evt) {
   popupCreateCard.open();
 });
 
-const popupProfileEdit = new PopupWithForm("#popup-editor");
+//*...............................................................................................................
+//* Aquí se llamó a la clase api para guardar la información del usuario
+const popupProfileEdit = new PopupWithForm("#popup-editor", (values) => {
+  api.editUser(values).then((response) => {
+    userInfo.setUserInfo(response);
+  });
+});
 popupProfileEdit.setEventListeners();
 
 const formValidator = new FormValidator(
