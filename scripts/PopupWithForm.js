@@ -3,7 +3,6 @@ export default class PopupWithForm extends PopUp {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
     this.submitForm = submitForm;
-    console.log(this.submitForm);
   }
 
   handleSubmit() {

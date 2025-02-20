@@ -44,6 +44,24 @@ class Api {
         return result;
       });
   }
+
+  addCard({ name, link }) {
+    console.log(fetch);
+    return fetch(`${this._baseUrl}/v1/cards`, {
+      method: "POST",
+      headers: {
+        ...this._headers,
+      },
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        return result;
+      });
+  }
 }
 
 const api = new Api({

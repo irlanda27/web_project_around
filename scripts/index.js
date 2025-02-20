@@ -117,14 +117,20 @@ function createCard(card) {
 }
 
 //*...............................................................................................................
-//* Aquí se crean las instancias de las clases PopupWithForm para crear tarjeta y editar perfil
+//* Aquí se crea la instancia de la clase PopupWithForm para crear tarjetas
 const popupCreateCard = new PopupWithForm("#popup-add-images", (values) => {
-  console.log(values);
-  const newCard = createCard(values);
-  console.log(newCard);
-  elementContainer.prepend(newCard);
-  popupCreateCard.close();
+  api
+    .addCard(values)
+    .then((response) => {
+      const newCard = createCard(response);
+      elementContainer.prepend(newCard);
+      popupCreateCard.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
+
 popupCreateCard.setEventListeners();
 addButton.addEventListener("click", function (evt) {
   popupCreateCard.open();
@@ -133,8 +139,10 @@ addButton.addEventListener("click", function (evt) {
 //*...............................................................................................................
 //* Aquí se llamó a la clase api para guardar la información del usuario
 const popupProfileEdit = new PopupWithForm("#popup-editor", (values) => {
+  console.log(values);
   api.editUser(values).then((response) => {
     userInfo.setUserInfo(response);
+    popupProfileEdit.close();
   });
 });
 popupProfileEdit.setEventListeners();
