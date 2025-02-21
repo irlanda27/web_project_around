@@ -46,8 +46,7 @@ class Api {
   }
 
   addCard({ name, link }) {
-    console.log(fetch);
-    return fetch(`${this._baseUrl}/v1/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
         ...this._headers,
@@ -56,6 +55,32 @@ class Api {
         name: name,
         link: link,
       }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        return result;
+      });
+  }
+
+  likeButton(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: {
+        ...this._headers,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        return result;
+      });
+  }
+
+  deleteLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: {
+        ...this._headers,
+      },
     })
       .then((res) => res.json())
       .then((result) => {

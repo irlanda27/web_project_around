@@ -28,6 +28,7 @@ import {
   formProfileEdit,
   closeButton2,
 } from "./utils.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
 //*...............................................................................................................
 // * Aquí se cargó la información del usuario desde la API
@@ -110,8 +111,16 @@ const initialCards = [
 //*Aquí se crea la instancia de la clase Section
 
 function createCard(card) {
-  const newCard = new Card(card.name, card.link, "#element-template", () =>
-    popupWithImage.open(card.link, card.name)
+  const newCard = new Card(
+    card.name,
+    card.link,
+    "#element-template",
+    () => popupWithImage.open(card.link, card.name),
+    handleLikeButtonClick,
+    card._id,
+    () => {
+      PopupWithConfirmation.open();
+    }
   ).getView();
   return newCard;
 }
@@ -135,6 +144,24 @@ popupCreateCard.setEventListeners();
 addButton.addEventListener("click", function (evt) {
   popupCreateCard.open();
 });
+//*...............................................................................................................
+//* Funciones para manejar el botón de like y el botón de eliminar like
+function handleLikeButtonClick(cardId) {
+  if (this._likeButton.src.includes("/images/Union.png")) {
+    return api.likeButton(cardId);
+  } else {
+    return api.deleteLike(cardId);
+  }
+}
+
+//*...............................................................................................................
+//* Funcion para crear el popup de eliminar tarjeta
+const popupWithConfirmation = new PopupWithConfirmation(
+  "#popup-delete",
+  (values) => {
+    console.log(values);
+  }
+);
 
 //*...............................................................................................................
 //* Aquí se llamó a la clase api para guardar la información del usuario
