@@ -87,6 +87,35 @@ class Api {
         return result;
       });
   }
+
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        ...this._headers,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        return result;
+      });
+  }
+
+  changeAvatar(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        ...this._headers,
+      },
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        return result;
+      });
+  }
 }
 
 const api = new Api({

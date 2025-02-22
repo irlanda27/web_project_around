@@ -53,10 +53,10 @@ export default class Card {
 
   _handleDeleteButton() {
     this._trashButton.addEventListener("click", (evt) => {
-      console.log(this._openPopup);
       const parentElement = evt.target.closest(".element__card");
       if (parentElement) {
-        this._openPopup;
+        this._openPopup(this._id);
+        console.log(this._id);
         /* parentElement.remove();*/
       }
     });
@@ -75,6 +75,16 @@ export default class Card {
         .catch((response) => {
           console.log(response);
         });
+    });
+  }
+
+  _handleDeleteButton() {
+    this._trashButton.addEventListener("click", (evt) => {
+      const parentElement = evt.target.closest(".element__card");
+      if (parentElement) {
+        this._openPopup(this._id);
+        /* parentElement.remove();*/
+      }
     });
   }
 }

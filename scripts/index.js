@@ -27,6 +27,9 @@ import {
   formCreateCard,
   formProfileEdit,
   closeButton2,
+  editAvatarPencil,
+  popupEditAvatar,
+  closeAvatarButton,
 } from "./utils.js";
 import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
@@ -111,6 +114,7 @@ const initialCards = [
 //*Aquí se crea la instancia de la clase Section
 
 function createCard(card) {
+  console.log(card);
   const newCard = new Card(
     card.name,
     card.link,
@@ -118,8 +122,8 @@ function createCard(card) {
     () => popupWithImage.open(card.link, card.name),
     handleLikeButtonClick,
     card._id,
-    () => {
-      PopupWithConfirmation.open();
+    (cardId) => {
+      popupWithConfirmation.open(cardId);
     }
   ).getView();
   return newCard;
@@ -145,7 +149,7 @@ addButton.addEventListener("click", function (evt) {
   popupCreateCard.open();
 });
 //*...............................................................................................................
-//* Funciones para manejar el botón de like y el botón de eliminar like
+//* Funcion para el like y el botón de delete like
 function handleLikeButtonClick(cardId) {
   if (this._likeButton.src.includes("/images/Union.png")) {
     return api.likeButton(cardId);
@@ -155,13 +159,31 @@ function handleLikeButtonClick(cardId) {
 }
 
 //*...............................................................................................................
-//* Funcion para crear el popup de eliminar tarjeta
+//* Funcion para crear el popup de confirmacion para eliminar tarjeta
 const popupWithConfirmation = new PopupWithConfirmation(
   "#popup-delete",
-  (values) => {
-    console.log(values);
-  }
+  handleDeleteCard
 );
+popupWithConfirmation.setEventListenersDeleteConfirmation();
+
+//*...............................................................................................................
+//* Funcion para confirmar que se elimine la tarjeta
+function handleDeleteCard(cardId) {
+  console.log(cardId);
+  api.deleteCard(cardId);
+  console.log("tarjeta eliminada");
+}
+
+//*................................................................................................................
+//* Evento para que el popup de editar Avatar se abra y se cierre
+
+editAvatarPencil.addEventListener("click", (evt) => {
+  popupEditAvatar.showModal();
+});
+
+closeAvatarButton.addEventListener("click", function () {
+  popupEditAvatar.close();
+});
 
 //*...............................................................................................................
 //* Aquí se llamó a la clase api para guardar la información del usuario

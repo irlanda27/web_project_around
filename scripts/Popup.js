@@ -11,15 +11,16 @@ export default class Popup {
     this.popupSelector.close();
   }
 
-  //funcion para cerrar el popup con la tecla esc
+  // Función para cerrar el popup con la tecla ESC
   _handleEscClose() {
-    this.popupSelector.addEventListener("click", function (evt) {
+    document.addEventListener("keydown", (evt) => {
       if (evt.key === "Escape") {
         this.close();
       }
     });
   }
 
+  // Función para cerrar el popup con botón de cerrar o haciendo clic fuera
   setEventListeners() {
     this.popupSelector.addEventListener("click", (evt) => {
       if (

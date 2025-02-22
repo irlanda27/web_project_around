@@ -27,3 +27,6 @@ export const popupWindowCloseButton = document.querySelector(
 );
 export const formCreateCard = document.querySelector("#form-card");
 export const formProfileEdit = document.querySelector("#form-profile");
+export const editAvatarPencil = document.querySelector(".profile__edit");
+export const popupEditAvatar = document.querySelector("#popup-edit-avatar");
+export const closeAvatarButton = document.querySelector("#close-button-avatar");

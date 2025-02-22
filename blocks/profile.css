@@ -53,7 +53,37 @@ background-color: transparent;
 margin-left: 140px;
 }
 
+.profile__edit{
+  position: absolute;
+  z-index: 2;
+  opacity: 0; 
+  transition: opacity 0.3s ease-in-out;
+}
 
+.profile__avatar{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); 
+  border-radius: 40%; 
+  opacity: 0; 
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.profile__avatar:hover .profile__overlay,
+.profile__avatar:hover .profile__edit {
+  opacity: 1;
+}
 
 @media screen and (max-width: 320px) {
 .profile{

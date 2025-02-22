@@ -14,10 +14,14 @@
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__vector" src="images/Vector.png" alt="imagenvector">
+      <img class="header__vector" src="images/Vector.png" alt="logo de Triple Ten">
     </header>
     <div class="profile">
-      <img class="profile__image" src="images/image.jpg" alt="jacquesexplorador" />
+      <div class="profile__avatar">
+        <div class="profile__overlay"></div>
+        <img class="profile__edit" src="./images/lapicito.png" id="lapicito-editor" alt="icono de lapiz">
+        <img class="profile__image" src="images/image.jpg" alt="imagen del usuario" />
+      </div>
       <div>
         <div class="profile__info">
           <p id="profile-name">Jacques Cousteau</p>
@@ -78,9 +82,21 @@
       <div class="popup__container">
         <p class="popup__title"> Estás seguro/a? </p>
         <form class="popup__form" id="form-profile" novalidate>
-          <button class="popup__button" id="button-submitProfile"> Sí </button>
+          <button class="popup__button" id="button-deleteConfirmation"> Sí </button>
         </form>
         <button class="popup__close" id="close-button">
+          <img class="popup__close-icon" src="./images/close_icon.png" alt="iconodecerrar">
+        </button>
+      </div>
+    </dialog>
+    <dialog class="popup" id="popup-edit-avatar">
+      <div class="popup__container">
+        <p class="popup__title"> Cambiar foto de perfil </p>
+        <form class="popup__form" id="form-profile-avatar">
+          <input class="popup__input" name="avatar" type="url" placeholder="URL de la imagen" id="input-url" required>
+          <button class="popup__button" id="button-save-avatar"> Guardar </button>
+        </form>
+        <button class="popup__close" id="close-button-avatar">
           <img class="popup__close-icon" src="./images/close_icon.png" alt="iconodecerrar">
         </button>
       </div>
