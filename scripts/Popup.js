@@ -23,8 +23,9 @@ export default class Popup {
   // Función para cerrar el popup con botón de cerrar o haciendo clic fuera
   setEventListeners() {
     this.popupSelector.addEventListener("click", (evt) => {
+      console.log(evt.target.classList);
       if (
-        evt.target.classList.contains("popup__close-button") ||
+        evt.target.classList.contains("popup__close-icon") ||
         evt.target === evt.currentTarget
       ) {
         this.close();

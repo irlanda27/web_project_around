@@ -30,13 +30,18 @@ import {
   editAvatarPencil,
   popupEditAvatar,
   closeAvatarButton,
+  avatarElement,
 } from "./utils.js";
 import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
 //*...............................................................................................................
 // * Aquí se cargó la información del usuario desde la API
 
-const userInfo = new UserInfo({ name: profileName, aboutMe: profileInfo });
+const userInfo = new UserInfo({
+  name: profileName,
+  aboutMe: profileInfo,
+  avatar: avatarElement,
+});
 
 api.getUser().then((response) => {
   userInfo.setUserInfo(response);
@@ -132,7 +137,7 @@ function createCard(card) {
 //*...............................................................................................................
 //* Aquí se crea la instancia de la clase PopupWithForm para crear tarjetas
 const popupCreateCard = new PopupWithForm("#popup-add-images", (values) => {
-  api
+  return api
     .addCard(values)
     .then((response) => {
       const newCard = createCard(response);
@@ -177,19 +182,28 @@ function handleDeleteCard(cardId) {
 //*................................................................................................................
 //* Evento para que el popup de editar Avatar se abra y se cierre
 
-editAvatarPencil.addEventListener("click", (evt) => {
-  popupEditAvatar.showModal();
+const editAvatarPopup = new PopupWithForm("#popup-edit-avatar", (values) => {
+  return api
+    .changeAvatar(values.avatar)
+    .then((response) => {
+      userInfo.setUserInfo(response);
+      editAvatarPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
-closeAvatarButton.addEventListener("click", function () {
-  popupEditAvatar.close();
+editAvatarPopup.setEventListeners();
+editAvatarPencil.addEventListener("click", () => {
+  editAvatarPopup.open();
 });
 
 //*...............................................................................................................
 //* Aquí se llamó a la clase api para guardar la información del usuario
 const popupProfileEdit = new PopupWithForm("#popup-editor", (values) => {
   console.log(values);
-  api.editUser(values).then((response) => {
+  return api.editUser(values).then((response) => {
     userInfo.setUserInfo(response);
     popupProfileEdit.close();
   });
