@@ -19,7 +19,7 @@
     
     .element__card-image{
     max-width: 282px;
-    min-height: 282px;
+    max-height: 282px;
     width: 100%;
     }
     
@@ -75,6 +75,5 @@
         .element{
         display: flex;
         flex-direction: column;
-        padding-left: 19px;
         }
     }
